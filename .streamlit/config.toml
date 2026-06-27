@@ -1,0 +1,15 @@
+# Bellwether brand theme
+# Palette — Pine #11352A (primary) · Amber #EBC55C (accent)
+#           Field #1E5141 (surface) · Chalk #F0ECDD (paper)
+# Type    — Space Grotesk (UI) · Space Mono (data) — loaded via app.py
+# Loaded when Streamlit is launched from the project directory.
+[theme]
+base = "dark"
+primaryColor = "#EBC55C"              # Amber
+backgroundColor = "#11352A"           # Pine
+secondaryBackgroundColor = "#1E5141"  # Field (sidebar / raised panels)
+textColor = "#F0ECDD"                 # Chalk
+font = "sans serif"
+
+[browser]
+gatherUsageStats = false

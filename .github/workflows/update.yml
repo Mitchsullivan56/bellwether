@@ -1,0 +1,51 @@
+name: Update rankings
+
+# Rebuilds the data + draft board daily and commits it. Streamlit Cloud
+# redeploys automatically on push, so the live app always shows fresh,
+# pre-warmed rankings (the in-app Refresh can't run there — read-only FS).
+
+on:
+  schedule:
+    - cron: "0 11 * * *"      # daily, 11:00 UTC
+  workflow_dispatch: {}        # plus a manual "Run workflow" button
+
+permissions:
+  contents: write              # to commit the refreshed data back
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Rebuild data + rankings
+        run: |
+          python build_dataset.py
+          python fetch_fantasypros.py
+          python build_draft_board.py
+          python backtest_draft.py
+          python analyze_importance.py
+
+      - name: Pre-warm the model cache
+        run: python warm_cache.py
+
+      - name: Archive a dated draft-board snapshot (public track record)
+        run: |
+          mkdir -p data/archive
+          cp data/draft_board.parquet "data/archive/draft_board_$(date +%F).parquet"
+
+      - name: Commit refreshed data
+        run: |
+          git config user.name "bellwether-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/
+          git commit -m "Daily rankings update $(date +%F)" || { echo "no changes"; exit 0; }
+          git push

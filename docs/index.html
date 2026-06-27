@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+  Bellwether — static landing page (no cold start).
+  Deploy free via GitHub Pages (Settings → Pages → /docs) or Cloudflare Pages.
+  TODO before deploy:
+    1. Replace DASHBOARD_URL below with your Streamlit Cloud URL.
+    2. Drop a screenshot at docs/screenshot.png (the placeholder shows if missing).
+    3. Update the accuracy numbers if the backtest changes.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bellwether — the fantasy projection model that shows its work</title>
+<meta name="description" content="A from-scratch, out-of-sample-backtested fantasy football projection model. 4% lower error than a trailing-average baseline, benchmarked against expert consensus, every prediction explainable.">
+<link rel="icon" href="icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --pine:#11352A; --amber:#EBC55C; --field:#1E5141; --chalk:#F0ECDD; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ background:var(--pine); color:var(--chalk); font-family:'Space Grotesk',sans-serif;
+        line-height:1.5; -webkit-font-smoothing:antialiased; }
+  .wrap{ max-width:920px; margin:0 auto; padding:clamp(1.5rem,4vw,3rem); }
+  header{ display:flex; align-items:center; gap:.7rem; margin-bottom:3.5rem; }
+  header .name{ font-size:1.6rem; font-weight:700; letter-spacing:-.02em; }
+  h1{ font-size:clamp(2.1rem,5.5vw,3.6rem); font-weight:700; letter-spacing:-.025em;
+      line-height:1.07; margin-bottom:1.1rem; }
+  h1 .amber{ color:var(--amber); }
+  .lead{ font-size:clamp(1.05rem,2.4vw,1.3rem); opacity:.9; max-width:42ch; margin-bottom:2rem; }
+  .stats{ display:flex; flex-wrap:wrap; gap:.7rem; margin-bottom:2.4rem; }
+  .stat{ background:var(--field); border-radius:12px; padding:.9rem 1.1rem; }
+  .stat b{ display:block; font-size:1.5rem; color:var(--amber); font-weight:700; }
+  .stat span{ font-size:.85rem; opacity:.8; }
+  .cta{ display:inline-block; background:var(--amber); color:var(--pine); font-weight:700;
+        text-decoration:none; padding:.85rem 1.6rem; border-radius:10px; font-size:1.05rem;
+        transition:transform .1s ease; }
+  .cta:hover{ transform:translateY(-2px); }
+  .note{ font-size:.85rem; opacity:.65; margin-top:.7rem; }
+  .shot{ margin:3rem 0 2rem; border:1px solid rgba(240,236,221,.15); border-radius:14px;
+         overflow:hidden; background:var(--field); }
+  .shot img{ display:block; width:100%; }
+  .shot .ph{ aspect-ratio:16/9; display:flex; align-items:center; justify-content:center;
+             color:rgba(240,236,221,.4); font-family:'Space Mono',monospace; font-size:.9rem; }
+  .why{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.2rem;
+        margin:2.5rem 0; }
+  .why h3{ color:var(--amber); font-size:1rem; margin-bottom:.3rem; }
+  .why p{ font-size:.95rem; opacity:.85; }
+  footer{ margin-top:3rem; padding-top:1.5rem; border-top:1px solid rgba(240,236,221,.12);
+          font-size:.85rem; opacity:.6; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <svg width="38" height="38" viewBox="0 0 110 110" aria-hidden="true">
+      <path d="M30 14 C 8 22 2 52 22 74 C 44 98 86 92 96 60 C 103 38 88 18 67 20 C 51 21 41 33 42 49 C 43 61 52 69 64 67 C 56 66 52 58 53 50 C 54 40 63 34 73 37 C 85 41 90 56 84 69 C 76 86 50 90 33 76 C 14 60 16 32 38 24 C 33 20 31 16 30 14 Z" fill="#EBC55C"/>
+    </svg>
+    <div class="name">Bellwether</div>
+  </header>
+
+  <h1>The fantasy projection model that <span class="amber">shows its work.</span></h1>
+  <p class="lead">A from-scratch model, backtested out-of-sample against expert consensus —
+     and honest about exactly where it wins and loses.</p>
+
+  <div class="stats">
+    <div class="stat"><b>4% lower</b><span>error vs a trailing-average baseline (MAE)</span></div>
+    <div class="stat"><b>21,000+</b><span>player-weeks scored, never trained on</span></div>
+    <div class="stat"><b>2021–2025</b><span>walk-forward backtest, beats consensus at RB</span></div>
+  </div>
+
+  <!-- Replace # with your Streamlit Cloud URL once deployed -->
+  <a class="cta" href="#">Launch the dashboard →</a>
+  <p class="note">Live draft board, weekly rankings, and the full backtest. The heavy app
+     wakes on click — this page stays instant.</p>
+
+  <div class="shot">
+    <!-- Drop docs/screenshot.png to replace this placeholder -->
+    <div class="ph">dashboard screenshot — add docs/screenshot.png</div>
+  </div>
+
+  <div class="why">
+    <div><h3>Out-of-sample</h3><p>Every number is from seasons the model never trained on —
+        walk-forward, no hindsight, no leakage.</p></div>
+    <div><h3>Benchmarked</h3><p>Scored head-to-head against FantasyPros expert consensus and
+        two hard baselines, on the same weeks.</p></div>
+    <div><h3>Explainable</h3><p>Permutation importance shows what drives every projection —
+        opportunity and game environment, not name brand.</p></div>
+  </div>
+
+  <footer>
+    Built by Mitchell Sullivan · data via nflverse &amp; FantasyPros ·
+    methodology &amp; track record inside the dashboard.
+  </footer>
+
+</div>
+</body>
+</html>

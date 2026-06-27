@@ -1,0 +1,21 @@
+# Secrets — never commit
+.streamlit/secrets.toml
+
+# Local-only signup capture (production uses Buttondown)
+data/signups.csv
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local tooling
+.claude/
+
+# NOTE: the data/*.parquet files and data/compute_cache.joblib ARE committed
+# on purpose — the deployed app (read-only filesystem) reads them, and the
+# scheduled GitHub Action regenerates + commits them. Do not ignore them.
