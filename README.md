@@ -9,7 +9,7 @@ honest about exactly where it wins and loses.
 > measured on **21,000+ player-weeks the model never trained on** (2021–2025) — and
 > **calibrated**: a 15-point projection really does average ~15 actual points.
 
-🔗 **Live dashboard:** _add your Streamlit URL here_ · 📈 Landing page in [`docs/`](docs/)
+🔗 **Live dashboard:** **[mitchsullivan56-bellwether-app-ojqhzl.streamlit.app](https://mitchsullivan56-bellwether-app-ojqhzl.streamlit.app/)** · 📈 Landing page in [`docs/`](docs/)
 
 ---
 

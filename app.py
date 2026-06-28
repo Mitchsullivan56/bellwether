@@ -58,7 +58,7 @@ DATA = PROJ / "data"
 
 # --- Public-deployment config (set REPO_URL/SEASON_PASS_URL when live;
 #     secrets come from .streamlit/secrets.toml locally or Streamlit Cloud) ---
-REPO_URL = ""            # public GitHub URL — shown in "Why trust it" once set
+REPO_URL = "https://github.com/Mitchsullivan56/bellwether"   # shown in "Why trust it"
 SEASON_PASS_URL = ""     # season-pass link — shown once set
 SIGNUPS_FILE = DATA / "signups.csv"
 
