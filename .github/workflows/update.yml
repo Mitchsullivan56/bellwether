@@ -34,6 +34,10 @@ jobs:
           python backtest_draft.py
           python analyze_importance.py
 
+      - name: Validate rebuilt data (don't ship garbage)
+        run: |
+          python -c "import pandas as pd; b=pd.read_parquet('data/draft_board.parquet'); m=pd.read_parquet('data/model_table.parquet'); assert len(b)>200 and len(m)>10000, ('bad data sizes', len(b), len(m)); print('validation OK:', len(b), 'players,', len(m), 'rows')"
+
       - name: Pre-warm the model cache
         run: python warm_cache.py
 
